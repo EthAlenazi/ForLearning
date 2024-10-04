@@ -4,8 +4,17 @@ using Middleware.Extencation;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<CustomeMiddleware>(); //added as extencations
 var app = builder.Build();
-
-
+//this is the correct order to add middleware 
+app.UseExceptionHandler();
+app.UseHsts();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseCors();
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+//after that we add my own custom middleware
 app.Use(async (HttpContext context, RequestDelegate next) =>
 {
     await context.Response.WriteAsync("Atheer ...."); 
