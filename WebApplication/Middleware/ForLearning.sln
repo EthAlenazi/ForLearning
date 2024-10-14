@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Middleware", "Middleware.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routing", "..\Routing\Routing.csproj", "{7A5904DD-5977-46E0-9851-021266A2247A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllersConcept", "..\ControllersConcept\ControllersConcept.csproj", "{7E281CB1-9519-415A-AEFB-DDA394FE12CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7A5904DD-5977-46E0-9851-021266A2247A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A5904DD-5977-46E0-9851-021266A2247A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A5904DD-5977-46E0-9851-021266A2247A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E281CB1-9519-415A-AEFB-DDA394FE12CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E281CB1-9519-415A-AEFB-DDA394FE12CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E281CB1-9519-415A-AEFB-DDA394FE12CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E281CB1-9519-415A-AEFB-DDA394FE12CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
