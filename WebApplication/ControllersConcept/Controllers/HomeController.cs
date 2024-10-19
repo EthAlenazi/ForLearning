@@ -33,13 +33,18 @@ namespace ControllersConcept.Controllers
             return new VirtualFileResult("/AtheerALenazi.pdf", "application/pdf");
         }
         [Route("download-file1")]//open file
-        public FileContentResult Index_File2()
+        public FileContentResult Index_File2()// for return file when we store it as byte in DB
         {
            byte[] fileBytes=  System.IO.File.
                 ReadAllBytes("C:\\Sorce\\ForLearning\\WebApplication\\ControllersConcept\\wwwroot\\AtheerALenazi.pdf");
             return File(fileBytes, "application/pdf");
         }
-       
+        [Route("download-file2")]//open file
+        public PhysicalFileResult Index_File3()//for return file if we don't have it in wwwroot 
+        {
+            return new PhysicalFileResult("C:\\Sorce\\ForLearning\\WebApplication\\ControllersConcept\\wwwroot\\AtheerALenazi.pdf",
+                "application/pdf");
+        }
         [Route("Data")]
         [Route("/")]
         public string Data()
