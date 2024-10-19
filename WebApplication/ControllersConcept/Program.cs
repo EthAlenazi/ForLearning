@@ -11,5 +11,5 @@ var app = builder.Build();
 
 // or diract use MapControllers()
 app.MapControllers();
-app.UseStaticFiles();//related to wwwroot
+app.UseStaticFiles();//related to wwwroot file to enable access the file 
 app.Run();

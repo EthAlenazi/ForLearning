@@ -27,11 +27,19 @@ namespace ControllersConcept.Controllers
            // return new JsonResult(person);
         }
 
-        [Route("index3")]//open file
+        [Route("download-file")]//open file
         public VirtualFileResult Index_File()
         {
             return new VirtualFileResult("/AtheerALenazi.pdf", "application/pdf");
         }
+        [Route("download-file1")]//open file
+        public FileContentResult Index_File2()
+        {
+           byte[] fileBytes=  System.IO.File.
+                ReadAllBytes("C:\\Sorce\\ForLearning\\WebApplication\\ControllersConcept\\wwwroot\\AtheerALenazi.pdf");
+            return File(fileBytes, "application/pdf");
+        }
+       
         [Route("Data")]
         [Route("/")]
         public string Data()
