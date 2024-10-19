@@ -27,6 +27,11 @@ namespace ControllersConcept.Controllers
            // return new JsonResult(person);
         }
 
+        [Route("index3")]//open file
+        public VirtualFileResult Index_File()
+        {
+            return new VirtualFileResult("/AtheerALenazi.pdf", "application/pdf");
+        }
         [Route("Data")]
         [Route("/")]
         public string Data()
