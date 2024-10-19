@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ControllersConcept.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ControllersConcept.Controllers
 {
@@ -6,7 +7,7 @@ namespace ControllersConcept.Controllers
     public class HomeController :Controller
     {
         [Route("index")]
-        public ContentResult Index()
+        public ContentResult Index_ContentResult()
         {
             //return new ContentResult() { Content = "oky", 
             //    ContentType = "Atheer" //can be anything 
@@ -15,6 +16,17 @@ namespace ControllersConcept.Controllers
             //return Content("oky","Atheer");  
             return Content("oky");
         }
+        [Route("index2")]
+        public JsonResult Index_JsonResult()
+        {
+            Person person = new Person() { 
+            Id= Guid.NewGuid(),
+            Name="Atheer",
+            Age= 27};
+            return Json(person);// this way or second one both work
+           // return new JsonResult(person);
+        }
+
         [Route("Data")]
         [Route("/")]
         public string Data()
