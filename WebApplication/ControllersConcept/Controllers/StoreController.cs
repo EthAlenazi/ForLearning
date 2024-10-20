@@ -21,9 +21,15 @@ namespace ControllersConcept.Controllers
             //return new LocalRedirectResult("/store/book"); //302 Found
             //return new LocalRedirectResult("/store/book",true);//shortcut 301 Moved Permanently 
             //return LocalRedirect("/store/book");//302 Found
-            return LocalRedirectPermanent("/store/book");
+            //return LocalRedirectPermanent("/store/book");
 
-                   }
+            ////RedirectResult : use direct url for any url local or in outside the project 
+
+            //return new RedirectResult("https://translate.google.com/?sl=en&tl=ar&op=translate");
+            //return Redirect("https://translate.google.com/?sl=en&tl=ar&op=translate");
+            //return RedirectPermanent("https://translate.google.com/?sl=en&tl=ar&op=translate");//shortcut 301 Moved Permanently 
+            return new RedirectResult("https://translate.google.com/?sl=en&tl=ar&op=translate", true);//301 Moved Permanently
+        }
 
         [Route("store/book")]
         public IActionResult GetResult()
