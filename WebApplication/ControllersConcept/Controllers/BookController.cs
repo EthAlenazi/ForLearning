@@ -10,29 +10,24 @@ namespace ControllersConcept.Controllers
             //book id can't be null// empty
             if (!Request.Query.ContainsKey("bookId"))
             {
-                Response.StatusCode = 400;
                 return BadRequest("book Id is not applied!");
-
             }
             //book id should be between 1 to 1000
             int bookId = Convert.ToInt32(ControllerContext.
                 HttpContext.Request.Query["bookId"]);
             if (bookId <= 0)
             {
-                Response.StatusCode = 400;
                 return BadRequest("book Id can't be lees then 0");
             }
 
             if (bookId > 1000)
             {
-                Response.StatusCode = 400;
-                return BadRequest("book Id can't br greater then 1000");
+                return NotFound("book Id can't br greater then 1000");
             }
             //isLoggedin should be true 
             if (Convert.ToBoolean(Request.Query["isLoggedin"]) == false)
             {
-                Response.StatusCode = 401;
-                return BadRequest("User must be authenticated");
+                return Unauthorized("User must be authenticated");
             }
             
             return File("/AtheerALenazi.pdf", "application/pdf");
