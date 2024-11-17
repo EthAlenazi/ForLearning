@@ -25,7 +25,7 @@ namespace ModelBinding_Validations.Controllers
         ///</summary>
         ///
         [Route("User")]
-        public IActionResult Index(Person person)
+        public IActionResult Index([Bind(nameof(person.Name))]Person person)
         {
             if (!ModelState.IsValid) 
             {
