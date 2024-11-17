@@ -4,7 +4,7 @@ using ModelBinding_Validations.Customvalidations;
 
 namespace ModelBinding_Validations.Models
 {
-    public class Person
+    public class Person :IValidatableObject
     {
         [Required]
         [Display(Name="Name")]
@@ -31,15 +31,24 @@ namespace ModelBinding_Validations.Models
         //[MinimumYearValidater(ErrorMessage ="Not Alowed the minimum year is 2000")]
         // [MinimumYearValidater(ErrorMessage ="Not Alowed the minimum year is {0}")]//"Not Alowed the minimum year is 2002"
         [MinimumYearValidater(2002)]//"Not alwoed to be less than 2002" DefaultErrorMessge
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public DateTime FromDate { get; set; }
         [DateRangeValidator("FromDate")]
         public DateTime ToDate { get; set; }
 
+        public int? Age { get; set; }
         public override string ToString()  
         {
             return $"phoneNumber: {Phone}, name: {Name}, url: {Url}, Password: {Password}, price: {Price}";
 
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+           if(!DateOfBirth.HasValue&& !Age.HasValue)
+                yield return new ValidationResult ("not Alowed to be both Age and Date of birth null.");
+          // if(!Age.HasValue)
+          //      yield return new ValidationResult("Error22..."); // the output with yield will be -->   "Error...", "Error22...",
         }
     }
 }
