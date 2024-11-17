@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ModelBinding_Validations.Models;
 
 namespace ModelBinding_Validations.Controllers
 {
@@ -23,10 +24,27 @@ namespace ModelBinding_Validations.Controllers
         ///data submitted by html forms
         ///</summary>
         ///
-        [Route("User/{name?}")]
-        public IActionResult Index(string name)
+        [Route("User")]
+        public IActionResult Index(Person person)
         {
-            return View();
+            if (!ModelState.IsValid) 
+            {
+                //var errors = new List<string>();
+                //foreach(var value in ModelState.Values)
+                //{
+                //    foreach (var item in value.Errors)
+                //    {
+                //        errors.Add(item.ErrorMessage);
+                //    }
+                //}
+                //return BadRequest(errors);
+
+                // after use LINQ
+                var error = ModelState.Values.SelectMany(value => value.Errors)
+                    .Select(error => error.ErrorMessage).ToList();
+                return BadRequest(error); 
+            }
+            return Content($"{person}");
         }
     }
 }
