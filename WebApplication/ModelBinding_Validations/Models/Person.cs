@@ -32,6 +32,9 @@ namespace ModelBinding_Validations.Models
         // [MinimumYearValidater(ErrorMessage ="Not Alowed the minimum year is {0}")]//"Not Alowed the minimum year is 2002"
         [MinimumYearValidater(2002)]//"Not alwoed to be less than 2002" DefaultErrorMessge
         public DateTime DateOfBirth { get; set; }
+        public DateTime FromDate { get; set; }
+        [DateRangeValidator("FromDate")]
+        public DateTime ToDate { get; set; }
 
         public override string ToString()  
         {
