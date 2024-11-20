@@ -44,7 +44,7 @@
             <h3>Mar 8 is International Women's Day</h3>
             break;
     } *@
-    @foreach (var item in person)
+   @*  @foreach (var item in person)
     {
         <h1>Hello, @item.Name</h1>
         @if (item.DateOfBirth.HasValue)
@@ -66,6 +66,32 @@
                 <h3>Mar 8 is International Women's Day</h3>
                 break;
         }           
+        <h3>------------------------------------</h3>
+    }
+    *@
+    @for( int i=0;i<2; i++)
+    {
+        var item = person[i];
+        <h1>Hello, @item.Name</h1>
+        @if (item.DateOfBirth.HasValue)
+        {
+            double age = Math.Round((DateTime.Now - item.DateOfBirth).Value.TotalDays / 365.25);
+            <h2>@age years old!</h2>
+        }
+        else
+        {
+            <h2>date of birth not provideed! </h2>
+        }
+
+        @switch (item.PersonGender)
+        {
+            case Gender.Male:
+                <h3>Nov 19 is International Men's Day</h3>
+                break;
+            case Gender.Female:
+                <h3>Mar 8 is International Women's Day</h3>
+                break;
+        }
         <h3>------------------------------------</h3>
     }
 
