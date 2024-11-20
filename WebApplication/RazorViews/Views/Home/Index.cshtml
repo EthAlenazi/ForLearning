@@ -3,7 +3,8 @@
     Person person = new Person
             {
                 Name = "Atheer",
-                //DateOfBirth = Convert.ToDateTime("1997-04-12")
+                DateOfBirth = Convert.ToDateTime("1997-04-12"),
+                PersonGender=Gender.Female
             };
 }
 
@@ -24,6 +25,16 @@
     else{
         <h2>date of birth not provideed! </h2>
     }
-  
+
+    @switch (person.PersonGender)
+    {
+        case Gender.Male:
+        <h3>Nov 19 is International Men's Day</h3>
+            break;
+        case Gender.Female:
+            <h3>Mar 8 is International Women's Day</h3>
+            break;
+    }
+
     </body>
 </html>
