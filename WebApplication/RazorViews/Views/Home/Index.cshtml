@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using RazorViews.Models;
+@{
+    Person person = new Person
+            {
+                Name = "Atheer",
+                //DateOfBirth = Convert.ToDateTime("1997-04-12")
+            };
+}
+
+<!DOCTYPE html>
 <html>
     <head>
         <title>Asp.Net Core App</title>
@@ -6,6 +15,15 @@
        
     </head>
     <body>
-        <h1>Hello!</h1>
+        <h1>Hello, @person.Name</h1>
+    @if (person.DateOfBirth.HasValue)
+    { 
+       double age = Math.Round((DateTime.Now - person.DateOfBirth).Value.TotalDays/365.25);
+       <h2>@age years old!</h2>     
+    }
+    else{
+        <h2>date of birth not provideed! </h2>
+    }
+  
     </body>
 </html>
