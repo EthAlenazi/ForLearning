@@ -1,11 +1,20 @@
 ﻿@using RazorViews.Models;
 @{
-    Person person = new Person
-            {
-                Name = "Atheer",
-                DateOfBirth = Convert.ToDateTime("1997-04-12"),
-                PersonGender=Gender.Female
-            };
+    List<Person> person = new List<Person> {
+        new Person  {
+            Name = "Atheer",
+            DateOfBirth = Convert.ToDateTime("1997-04-12"),
+            PersonGender = Gender.Female
+        },
+            new Person  {
+            Name = "Mohameed",
+            PersonGender = Gender.Male
+        },
+            new Person  {
+            Name = "Majed",
+            DateOfBirth = Convert.ToDateTime("1991-02-05"),
+            PersonGender = Gender.Male
+        }};
 }
 
 <!DOCTYPE html>
@@ -16,7 +25,7 @@
        
     </head>
     <body>
-        <h1>Hello, @person.Name</h1>
+ @*        <h1>Hello, @person.Name</h1>
     @if (person.DateOfBirth.HasValue)
     { 
        double age = Math.Round((DateTime.Now - person.DateOfBirth).Value.TotalDays/365.25);
@@ -34,6 +43,30 @@
         case Gender.Female:
             <h3>Mar 8 is International Women's Day</h3>
             break;
+    } *@
+    @foreach (var item in person)
+    {
+        <h1>Hello, @item.Name</h1>
+        @if (item.DateOfBirth.HasValue)
+        {
+            double age = Math.Round((DateTime.Now - item.DateOfBirth).Value.TotalDays / 365.25);
+            <h2>@age years old!</h2>
+        }
+        else
+        {
+            <h2>date of birth not provideed! </h2>
+        }
+
+        @switch (item.PersonGender)
+        {
+            case Gender.Male:
+                <h3>Nov 19 is International Men's Day</h3>
+                break;
+            case Gender.Female:
+                <h3>Mar 8 is International Women's Day</h3>
+                break;
+        }           
+        <h3>------------------------------------</h3>
     }
 
     </body>
